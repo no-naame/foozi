@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Manrope } from 'next/font/google';
+
+const manrope = Manrope({
+    subsets: ['latin'],
+    variable: '--font-manrope',
+    weight: ['200', '300', '400', '500', '600', '700', '800'],
+});
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,17 +27,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+      <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${manrope.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+      {children}
       </body>
-    </html>
+      </html>
   );
 }
+
