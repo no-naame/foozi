@@ -3,13 +3,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-import {ChatbotPage} from "@/components/ui/Lamp";
 
 export default function LandingPage() {
   return (
-      // <>
-      // <ChatbotPage/>
-      // </>
       <div className="min-h-screen text-white relative">
         <ParticleBackground />
         <div className="relative z-10">
