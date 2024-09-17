@@ -1,34 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
       <div className="min-h-screen text-white relative">
         <ParticleBackground />
         <div className="relative z-10">
-          <header className="px-4 lg:px-6 h-20 flex items-center justify-between bg-white mx-10 mt-2 rounded-3xl bg-opacity-20 backdrop-blur-sm">
-            <Link className="flex items-center justify-center" href="#">
-              <span className="text-2xl font-bold text-white-500">Foozi</span>
-            </Link>
-            <nav className="flex gap-6">
-              <Link className="text-xl font-medium hover:text-orange-500 transition-colors" href="#">
-                Home
-              </Link>
-              <Link className="text-xl font-medium hover:text-orange-500 transition-colors" href="#">
-                About Us
-              </Link>
-            </nav>
-            <Button className="bg-orange-500 text-white rounded-3xl hover:bg-orange-600 transition-colors">
-              Talk to Foozi
-            </Button>
-          </header>
-
           <main className="flex-1 flex flex-col md:flex-row items-center justify-center py-10 gap-12">
             <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-12">
-              {/* Main Content */}
               <div className="w-full md:w-1/2 space-y-6 bg-black bg-opacity-15 backdrop-blur-sm p-8 rounded-lg">
                 <h1 className="text-5xl md:text-[80px] lg:text-[80px] font-medium leading-[1.1]">
                   <span className="block tracking-tight">No one craves</span>
@@ -38,9 +20,11 @@ export default function LandingPage() {
                 <p className="text-3xl text-gray-300">
                   Our AI understands your mood and recommends the perfect meal, anytime, anywhere.
                 </p>
-                <Button className="bg-orange-500 text-black hover:bg-orange-600 rounded-3xl transition-colors text-lg px-6 py-6">
+                <Link href="/chat">
+                <Button  className="mt-2 bg-orange-500 text-black hover:bg-orange-600 rounded-3xl transition-colors text-lg px-6 py-6">
                   Talk to Foozi
                 </Button>
+                </Link>
               </div>
 
               <div className="w-full md:w-1/2 h-[40rem] flex items-center justify-center">

@@ -36,7 +36,7 @@ export const ParticleBackground = ({ debug = false }) => {
         const animate = () => {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
             ctx.fillRect(0, 0, canvas.width, canvas.height)
-            ctx.fillStyle = "rgba(249, 115, 22, 0.7)"; // Bright neon-orange color
+            ctx.fillStyle = "rgba(249, 115, 22, 0.7)";
             ctx.shadowBlur = 15;
             // ctx.shadowColor = "rgba(249, 115, 22, 1)";
 
