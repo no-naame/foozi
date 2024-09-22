@@ -1,14 +1,42 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
+import { signInWithGoogle, logout, checkAuth } from '@/auth/auth';
+import { User } from "firebase/auth";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+
+    useEffect(() => {
+        checkAuth((authUser) => {
+            setUser(authUser);
+        });
+    }, []);
+
+    const handleSignIn = async () => {
+        try {
+            await signInWithGoogle();
+        } catch (error) {
+            console.error("Error signing in:", error);
+        }
+    };
+
+    const handleSignOut = async () => {
+        try {
+            await logout();
+            setUser(null);
+        } catch (error) {
+            console.error("Error signing out:", error);
+        }
     };
 
     return (
@@ -19,20 +47,27 @@ const Header = () => {
                 </Link>
 
                 <nav className="hidden md:flex gap-6">
-                    <Link className="text-base font-medium text-white hover:text-orange-500 " href="#">
+                    <Link className="text-base font-medium text-white hover:text-orange-500" href="/">
                         Home
-                    </Link>
-                    <Link className="text-base font-medium text-white hover:text-orange-500" href="#">
-                        About Us
                     </Link>
                 </nav>
 
                 <div className="hidden md:block">
-                    <Link href="/chat">
-                        <Button className="bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors px-6 py-2">
-                            Talk to Foozi
+                    {user ? (
+                        <Button
+                            onClick={handleSignOut}
+                            className="bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors px-6 py-2"
+                        >
+                            Sign Out
                         </Button>
-                    </Link>
+                    ) : (
+                        <Button
+                            onClick={handleSignIn}
+                            className="bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors px-6 py-2"
+                        >
+                            Sign In
+                        </Button>
+                    )}
                 </div>
 
                 <button className="md:hidden text-white" onClick={toggleMenu}>
@@ -43,17 +78,24 @@ const Header = () => {
             {isMenuOpen && (
                 <div className="md:hidden mt-4">
                     <nav className="flex flex-col gap-4">
-                        <Link className="text-base font-medium text-white hover:text-orange-500 transition-colors" href="#">
+                        <Link className="text-base text-center font-medium text-white hover:text-orange-500 transition-colors" href="/">
                             Home
                         </Link>
-                        <Link className="text-base font-medium text-white hover:text-orange-500 transition-colors" href="#">
-                            About Us
-                        </Link>
-                        <Link href="/chat">
-                            <Button className="bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors px-6 py-2 w-full">
-                                Talk to Foozi
+                        {user ? (
+                            <Button
+                                onClick={handleSignOut}
+                                className="bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors px-6 py-2 w-full"
+                            >
+                                Sign Out
                             </Button>
-                        </Link>
+                        ) : (
+                            <Button
+                                onClick={handleSignIn}
+                                className="bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors px-6 py-2 w-full"
+                            >
+                                Sign In
+                            </Button>
+                        )}
                     </nav>
                 </div>
             )}

@@ -25,8 +25,8 @@ export const ParticleBackground = ({ debug = false }) => {
         // Initialize particles
         for (let i = 0; i < 38; i++) {
             particlesRef.current.push({
-                x: Math.random() * canvas.width*20,
-                y: Math.random() * canvas.height*20,
+                x: Math.random() * canvas.width*3,
+                y: Math.random() * canvas.height*3,
                 size: Math.random() * 20 + 1,
                 speedX: Math.random() * 0.5 - 0.25,
                 speedY: Math.random() * 0.5 - 0.25
