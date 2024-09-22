@@ -40,14 +40,14 @@ const Header = () => {
     };
 
     return (
-        <header className="px-4 sm:px-6 py-4 bg-white bg-opacity-10 backdrop-blur-sm mx-5 mt-2 rounded-xl sticky top-0 left-0 right-0 z-50">
+        <header className="px-4 sm:px-6 py-4 bg-white bg-opacity-15 backdrop-blur-sm mx-5 mt-2 rounded-xl sticky top-0 left-0 right-0 z-50">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <Link className="flex items-center justify-center" href="/">
-                    <span className="text-2xl font-bold text-white">Foozi</span>
+                    <span className="text-2xl font-bold text-orange-500">Foozi</span>
                 </Link>
 
                 <nav className="hidden md:flex gap-6">
-                    <Link className="text-base font-medium text-white hover:text-orange-500" href="/">
+                    <Link className="text-base font-medium text-orange-500 hover:text-orange-500" href="/">
                         Home
                     </Link>
                 </nav>
@@ -78,7 +78,7 @@ const Header = () => {
             {isMenuOpen && (
                 <div className="md:hidden mt-4">
                     <nav className="flex flex-col gap-4">
-                        <Link className="text-base text-center font-medium text-white hover:text-orange-500 transition-colors" href="/">
+                        <Link className="text-base text-center font-medium text-orange-500 hover:text-orange-500 transition-colors" href="/">
                             Home
                         </Link>
                         {user ? (
