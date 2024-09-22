@@ -70,7 +70,7 @@ const Header = () => {
                     )}
                 </div>
 
-                <button className="md:hidden text-white" onClick={toggleMenu}>
+                <button className="md:hidden text-orange-500" onClick={toggleMenu}>
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
